@@ -35,7 +35,9 @@ set_target_properties(ebur128 PROPERTIES
   SOVERSION ${EBUR128_VERSION_MAJOR}
   VERSION ${EBUR128_VERSION}
 )
-
+if(APPLE)
+  set_target_properties(ebur128 PROPERTIES MACOSX_RPATH ON)
+endif()
 if(BUILD_SHARED_LIBS)
   if(MSVC)
     target_sources(ebur128 PRIVATE ebur128.def)
